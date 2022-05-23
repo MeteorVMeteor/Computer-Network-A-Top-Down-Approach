@@ -1,4 +1,4 @@
 # Computer-Network-A-Top-Down-Approach
-Assignment(packet capture)
-
+Lab(packet capture)
+Using WIRESHARK
 https://gaia.cs.umass.edu/kurose_ross/index.php

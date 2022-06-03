@@ -27,3 +27,15 @@ Explain.
 Status Code: 304
 Response Phrase: Not Modified
 No, NO Content-Length
+12. How many HTTP GET request messages did your browser send? Which packet
+number in the trace contains the GET message for the Bill or Rights?
+[HTTP request 1/1]
+13. Which packet number in the trace contains the status code and phrase associated
+with the response to the HTTP GET request?
+[Frame: 64, payload: 0-1413 (1414 bytes)]
+14. What is the status code and phrase in the response?
+Status Code: 200  
+Response Phrase: OK
+15. How many data-containing TCP segments were needed to carry the single HTTP
+response and the text of the Bill of Rights?
+[Segment count: 4]

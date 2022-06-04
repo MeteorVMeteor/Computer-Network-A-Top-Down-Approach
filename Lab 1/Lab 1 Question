@@ -47,3 +47,9 @@ GET /8E_cover_small.jpg HTTP/1.1\r\n
 17. Can you tell whether your browser downloaded the two images serially, or
 whether they were downloaded from the two web sites in parallel? Explain.
 two web sites in parallel, HTTP/1.1 200 OK\r\n , HTTP/1.1 301 Moved Permanently\r\n -> Location: https://kurose.cslash.net/8E_cover_small.jpg\r\n
+18. What is the server’s response (status code and phrase) in response to the initial
+HTTP GET message from your browser?
+Status Code: 401, Response Phrase: Authorization Required
+19. When your browser’s sends the HTTP GET message for the second time, what
+new field is included in the HTTP GET message?
+Authorization: Basic ZXRoLXN0dWRlbnRzOm5ldHdvcmtz\r\n

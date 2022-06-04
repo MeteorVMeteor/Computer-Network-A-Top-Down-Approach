@@ -39,3 +39,11 @@ Response Phrase: OK
 15. How many data-containing TCP segments were needed to carry the single HTTP
 response and the text of the Bill of Rights?
 [Segment count: 4]
+16. How many HTTP GET request messages did your browser send? To which
+Internet addresses were these GET requests sent?
+GET /wireshark-labs/HTTP-wireshark-file4.html HTTP/1.1\r\n
+GET /pearson.png HTTP/1.1\r\n
+GET /8E_cover_small.jpg HTTP/1.1\r\n
+17. Can you tell whether your browser downloaded the two images serially, or
+whether they were downloaded from the two web sites in parallel? Explain.
+two web sites in parallel, HTTP/1.1 200 OK\r\n , HTTP/1.1 301 Moved Permanently\r\n -> Location: https://kurose.cslash.net/8E_cover_small.jpg\r\n

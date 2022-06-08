@@ -1,0 +1,7 @@
+1. Run nslookup to obtain the IP address of a Web server in Asia. What is the IP address of that server? 
+>nslookup www.baidu.com   119.63.197.151
+2. Run nslookup to determine the authoritative DNS servers for a university in Europe. 
+>nslookup -type=NS www.ox.ac.uk   raptor.dns.ox.ac.uk
+3. Run nslookup so that one of the DNS servers obtained in Question 2 is queried for the mail servers for Yahoo! mail. What is its IP address? 
+>nslookup mail.yahoo.co.jp raptor.dns.ox.ac.uk  request timed out. timeout was 2 seconds.
+>nslookup mail.yahoo.co.jp  183.79.40.122  203.216.246.15

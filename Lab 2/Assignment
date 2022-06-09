@@ -1,7 +1,41 @@
 1. Run nslookup to obtain the IP address of a Web server in Asia. What is the IP address of that server? 
 >nslookup www.baidu.com   119.63.197.151
+
 2. Run nslookup to determine the authoritative DNS servers for a university in Europe. 
 >nslookup -type=NS www.ox.ac.uk   raptor.dns.ox.ac.uk
+
 3. Run nslookup so that one of the DNS servers obtained in Question 2 is queried for the mail servers for Yahoo! mail. What is its IP address? 
 >nslookup mail.yahoo.co.jp raptor.dns.ox.ac.uk  request timed out. timeout was 2 seconds.
 >nslookup mail.yahoo.co.jp  183.79.40.122  203.216.246.15
+
+4. Locate the DNS query and response messages. Are then sent over UDP or TCP? 
+UDP
+192.168.31.128	192.168.31.1	DNS	72	Standard query 0xba67 A www.ietf.org
+User Datagram Protocol, Src Port: 59325, Dst Port: 53
+192.168.31.1	192.168.31.128	DNS	149	Standard query response 0xba67 A www.ietf.org CNAME www.ietf.org.cdn.cloudflare.net A 104.16.45.99 A 104.16.44.99
+User Datagram Protocol, Src Port: 53, Dst Port: 59325
+
+5. What is the destination port for the DNS query message? What is the source port of DNS response message? 
+53, 53
+
+6. To what IP address is the DNS query message sent? Use ipconfig to determine the IP address of your local DNS server. Are these two IP addresses the same? 
+SAME-> DNS Servers  . . . . . . . . . . . : 192.168.31.1  Internet Protocol Version 4, Src: 192.168.31.128, Dst: 192.168.31.1
+
+7. Examine the DNS query message. What “Type” of DNS query is it? Does the query message contain any “answers”? 
+No Answers
+Flags: 0x0100 Standard query
+Answer RRs: 0
+
+8. Examine the DNS response message. How many “answers” are provided? What do each of these answers contain? 
+Name, Type, Class, Data Length, CNAME/Address
+www.ietf.org: type CNAME, class IN, cname www.ietf.org.cdn.cloudflare.net -> protect by cloudflare
+www.ietf.org.cdn.cloudflare.net: type A, class IN, addr 104.16.45.99 
+www.ietf.org.cdn.cloudflare.net: type A, class IN, addr 104.16.44.99 -> 2 useful IP address
+
+9. Consider the subsequent TCP SYN packet sent by your host. Does the destination IP address of the SYN packet correspond to any of the IP addresses provided in the DNS response message? 
+192.168.31.128	104.16.45.99	TCP	66	56366 → 80 [SYN] Seq=0 Win=64240 Len=0 MSS=1460 WS=256 SACK_PERM=1
+
+10. This web page contains images. Before retrieving each image, does your host issue new DNS queries? 
+NO
+one DNS query to Name: analytics.ietf.org, web tracking by IEFT
+

@@ -81,3 +81,15 @@ Answer RRs: 0
 
 19. Provide a screenshot. 
 
+20. To what IP address is the DNS query message sent? Is this the IP address of your default local DNS server? If not, what does the IP address correspond to? 
+No   bitsy.mit.edu    Address:  18.0.72.3
+128.238.38.160	18.72.0.3	DNS	74	Standard query 0x0003 A www.aiit.or.kr
+
+21. Examine the DNS query message. What “Type” of DNS query is it? Does the query message contain any “answers”? 
+Type: A (Host Address) (1)  NO ANSWERS
+22. Examine the DNS response message. How many “answers” are provided? What does each of these answers contain? 
+www.aiit.or.kr: type A, class IN, addr 218.36.94.200
+Authoritative nameservers   aiit.or.kr: type NS, class IN, ns ns.aiit.or.kr   aiit.or.kr: type NS, class IN, ns w3.aiit.or.kr
+Additional records   ns.aiit.or.kr: type A, class IN, addr 222.106.36.66    w3.aiit.or.kr: type A, class IN, addr 222.106.36.67
+23. Provide a screenshot. 
+

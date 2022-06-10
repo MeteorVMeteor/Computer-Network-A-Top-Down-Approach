@@ -53,13 +53,31 @@ No Answers
 
 14. Examine the DNS response message. How many “answers” are provided? What do each of these answers contain? 
 www.mit.edu: type CNAME, class IN, cname www.mit.edu.edgekey.net -> CNAME
+
 www.mit.edu.edgekey.net: type CNAME, class IN, cname e9566.dscb.akamaiedge.net  -> CNAME
 e9566.dscb.akamaiedge.net: type A, class IN, addr 104.102.166.38  ->  IP Address
 
 15. Provide a screenshot. 
 
 16. To what IP address is the DNS query message sent? Is this the IP address of your default local DNS server? 
+192.168.31.128	192.168.31.1	DNS	67	Standard query 0x0002 NS mit.edu
+YES  DNS Servers  . . . . . . . . . . . : 192.168.31.1
+
 17. Examine the DNS query message. What “Type” of DNS query is it? Does the query message contain any “answers”? 
+Type: NS (authoritative Name Server) (2)
+Answer RRs: 0
+
 18. Examine the DNS response message. What MIT nameservers does the response message provide? Does this response message also provide the IP addresses of the MIT namesers? 
+    Answers
+        mit.edu: type NS, class IN, ns use2.akam.net
+        mit.edu: type NS, class IN, ns eur5.akam.net
+        mit.edu: type NS, class IN, ns usw2.akam.net
+        mit.edu: type NS, class IN, ns ns1-173.akam.net
+        mit.edu: type NS, class IN, ns use5.akam.net
+        mit.edu: type NS, class IN, ns ns1-37.akam.net
+        mit.edu: type NS, class IN, ns asia2.akam.net
+        mit.edu: type NS, class IN, ns asia1.akam.net
+       NO IP Address
+
 19. Provide a screenshot. 
 

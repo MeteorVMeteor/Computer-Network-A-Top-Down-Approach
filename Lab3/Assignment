@@ -19,6 +19,18 @@ SYN : [Next Sequence Number: 1    (relative sequence number)]
 Flags: 0x012 (SYN, ACK)
 
 6. What is the sequence number of the TCP segment containing the HTTP POST command? Note that in order to find the POST command, you’ll need to dig into the packet content field at the bottom of the Wireshark window, looking for a segment with a “POST” within its DATA field. 
-7. Consider the TCP segment containing the HTTP POST as the first segment in the TCP connection. What are the sequence numbers of the first six segments in the 
-TCP connection (including the segment containing the HTTP POST)? At what time was each segment sent? When was the ACK for each segment received? Given the difference between when each TCP segment was sent, and when its acknowledgement was received, what is the RTT value for each of the six segments? What is the EstimatedRTT value (see Section 3.5.3, page 242 in text) after the receipt of each ACK? Assume that the value of the 
-EstimatedRTT is equal to the measured RTT for the first segment, and then is computed using the EstimatedRTT equation on page 242 for all subsequent segments. 
+Sequence Number (raw): 35123973
+50 4f 53 54 20 2f 77 69 ……
+POST /wireshark-labs/lab3-1-reply.htm HTTP/1.1
+
+7. Consider the TCP segment containing the HTTP POST as the first segment in the TCP connection. What are the sequence numbers of the first six segments in the TCP connection (including the segment containing the HTTP POST)? At what time was each segment sent? When was the ACK for each segment received? Given the difference between when each TCP segment was sent, and when its acknowledgement was received, what is the RTT value for each of the six segments? What is the EstimatedRTT value (see Section 3.5.3, page 242 in text) after the receipt of each ACK? Assume that the value of the EstimatedRTT is equal to the measured RTT for the first segment, and then is computed using the EstimatedRTT equation on page 242 for all subsequent segments. 
+Sequence Number (raw): 35123973  96	13.418992	10.58.97.5	128.119.245.12	TCP	779	59092 → 80 [PSH, ACK] Seq=1 Ack=1 Win=131328 Len=725
+Sequence Number (raw): 35124698  97	13.419240	10.58.97.5	128.119.245.12	TCP	1140	59092 → 80 [ACK] Seq=726 Ack=1 Win=131328 Len=1086
+Sequence Number (raw): 35125784  98	13.419240	10.58.97.5	128.119.245.12	TCP	1140	59092 → 80 [ACK] Seq=1812 Ack=1 Win=131328 Len=1086
+Sequence Number (raw): 35126870  99	13.419240	10.58.97.5	128.119.245.12	TCP	1140	59092 → 80 [ACK] Seq=2898 Ack=1 Win=131328 Len=1086
+Sequence Number (raw): 35127956  100	13.419240	10.58.97.5	128.119.245.12	TCP	1140	59092 → 80 [ACK] Seq=3984 Ack=1 Win=131328 Len=1086
+Sequence Number (raw): 35129042  101	13.419240	10.58.97.5	128.119.245.12	TCP	1140	59092 → 80 [ACK] Seq=5070 Ack=1 Win=131328 Len=1086
+106	13.607701	128.119.245.12	10.58.97.5	TCP	60	80 → 59092 [ACK] Seq=1 Ack=726 Win=30720 Len=0
+108	13.607809	128.119.245.12	10.58.97.5	TCP	60	80 → 59092 [ACK] Seq=1 Ack=5070 Win=39424 Len=0
+RTT0 : 13.607701 - 13.418992 = 0.188709  RTT1 : 13.607809 - 13.419240 = 0.188569
+

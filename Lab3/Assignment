@@ -35,3 +35,33 @@ Sequence Number (raw): 35129042  101	13.419240	10.58.97.5	128.119.245.12	TCP	114
 RTT0 : 13.607701 - 13.418992 = 0.188709  RTT1 : 13.607809 - 13.419240 = 0.188569
 EstimatedRTT: 0.1886915
 
+8. What is the length of each of the first six TCP segments?
+725 * 1
+1086 * 5
+
+9. What is the minimum amount of available buffer space advertised at the received for the entire trace? Does the lack of receiver buffer space ever throttle the sender? 
+2	0.023172	128.119.245.12	192.168.1.102	TCP	62	80 → 1161 [SYN, ACK] Seq=0 Ack=1 Win=5840 Len=0 MSS=1460 SACK_PERM=1
+
+9	0.077294	128.119.245.12	192.168.1.102	TCP	60	80 → 1161 [ACK] Seq=1 Ack=2026 Win=8760 Len=0
+Beacause 8760-7865(1460*5+565) < MSS(1460)
+11	0.078157	192.168.1.102	128.119.245.12	TCP	1514	1161 → 80 [ACK] Seq=6406 Ack=1 Win=17520 Len=1460 [TCP segment of a reassembled PDU]
+13	0.124185	192.168.1.102	128.119.245.12	TCP	1201	1161 → 80 [PSH, ACK] Seq=7866 Ack=1 Win=17520 Len=1147 [TCP segment of a reassembled PDU]
+so wait 0.078157 -> 0.124185
+
+10. Are there any retransmitted segments in the trace file? What did you check for (in the trace) in order to answer this question? 
+no
+no same seq
+
+11. How much data does the receiver typically acknowledge in an ACK? Can you identify cases where the receiver is ACKing every other received segment (see Table 3.2 on page 250 in the text). 
+typically 1 ack to 1 segment
+7	0.054026	192.168.1.102	128.119.245.12	TCP	1514	1161 → 80 [ACK] Seq=2026 Ack=1 Win=17520 Len=1460 [TCP segment of a reassembled PDU]
+9	0.077294	128.119.245.12	192.168.1.102	TCP	60	80 → 1161 [ACK] Seq=1 Ack=2026 Win=8760 Len=0
+8	0.054690	192.168.1.102	128.119.245.12	TCP	1514	1161 → 80 [ACK] Seq=3486 Ack=1 Win=17520 Len=1460 [TCP segment of a reassembled PDU]
+12	0.124085	128.119.245.12	192.168.1.102	TCP	60	80 → 1161 [ACK] Seq=1 Ack=3486 Win=11680 Len=0
+
+12. What is the throughput (bytes transferred per unit time) for the TCP connection? Explain how you calculated this value. 
+318	14.187045	128.119.245.12	10.58.97.5	TCP	60	80 → 59092 [ACK] Seq=1 Ack=153045 Win=277888 Len=0
+ACK 153045 means sent 153045 bytes
+96	13.418992	10.58.97.5	128.119.245.12	TCP	779	59092 → 80 [PSH, ACK] Seq=1 Ack=1 Win=131328 Len=725 [TCP segment of a reassembled PDU]
+time 14.187045 - 13.418992 = 0.768053
+153045 / 0.768053 = 199263 Bps = 194 KBps = 1.5Mbps

@@ -41,12 +41,7 @@ EstimatedRTT: 0.1886915
 
 9. What is the minimum amount of available buffer space advertised at the received for the entire trace? Does the lack of receiver buffer space ever throttle the sender? 
 2	0.023172	128.119.245.12	192.168.1.102	TCP	62	80 → 1161 [SYN, ACK] Seq=0 Ack=1 Win=5840 Len=0 MSS=1460 SACK_PERM=1
-
-9	0.077294	128.119.245.12	192.168.1.102	TCP	60	80 → 1161 [ACK] Seq=1 Ack=2026 Win=8760 Len=0
-Beacause 8760-7865(1460*5+565) < MSS(1460)
-11	0.078157	192.168.1.102	128.119.245.12	TCP	1514	1161 → 80 [ACK] Seq=6406 Ack=1 Win=17520 Len=1460 [TCP segment of a reassembled PDU]
-13	0.124185	192.168.1.102	128.119.245.12	TCP	1201	1161 → 80 [PSH, ACK] Seq=7866 Ack=1 Win=17520 Len=1147 [TCP segment of a reassembled PDU]
-so wait 0.078157 -> 0.124185
+No, receiver buffer space still raising.
 
 10. Are there any retransmitted segments in the trace file? What did you check for (in the trace) in order to answer this question? 
 no
@@ -65,3 +60,10 @@ ACK 153045 means sent 153045 bytes
 96	13.418992	10.58.97.5	128.119.245.12	TCP	779	59092 → 80 [PSH, ACK] Seq=1 Ack=1 Win=131328 Len=725 [TCP segment of a reassembled PDU]
 time 14.187045 - 13.418992 = 0.768053
 153045 / 0.768053 = 199263 Bps = 194 KBps = 1.5Mbps
+
+13. Use the Time-Sequence-Graph(Stevens) plotting tool to view the sequence number versus time plot of segments being sent from the client to the gaia.cs.umass.edu server. Can you identify where TCP’s slowstart phase begins and ends, and where congestion avoidance takes over? Comment on ways in which the measured data differs from the idealized behavior of TCP that we’ve studied in the text. 
+CAN'T check
+About the trace1 data, cwnd didn't raise.
+
+14. Answer each of two questions above for the trace that you have gathered when you transferred a file from your computer to gaia.cs.umass.edu
+CAN'T check, because my data didn't retransmitted any packet, and each block is double the length of the previous block.

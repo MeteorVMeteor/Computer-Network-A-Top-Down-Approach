@@ -1,0 +1,31 @@
+1. Select one UDP packet from your trace. From this packet, determine how many fields there are in the UDP header. (You shouldn’t look in the textbook! Answer these questions directly from what you observe in the packet trace.) Name these fields. 
+Length: 41 - UDP payload (33 bytes) = 8 bytes
+Source port(2bytes) + Destination port(2bytes) + Length(2bytes) + Checksum(2bytes)
+2. By consulting the displayed information in Wireshark’s packet content field for this packet, determine the length (in bytes) of each of the UDP header fields. 
+Source port(2bytes) + Destination port(2bytes) + Length(2bytes) + Checksum(2bytes)
+
+3. The value in the Length field is the length of what? (You can consult the text for this answer). Verify your claim with your captured UDP packet. 
+Data + Header
+Length: 41 = UDP payload (33 bytes) + 8 bytes
+Because UDP header not change, we can get data length is 33bytes in this segment, so that show Length means DATA + HEADER.
+
+4. What is the maximum number of bytes that can be included in a UDP payload? (Hint: the answer to this question can be determined by your answer to 2. above) 
+65535bytes
+We can know that UDP header only can show 2bytes of length, 65535 is the biggest number in unsigned type 2bytes.
+
+5. What is the largest possible source port number? (Hint: see the hint in 4.) 
+65535bytes
+same reason with 4., tcp port also onlt have 65535.
+
+6. What is the protocol number for UDP? Give your answer in both hexadecimal and decimal notation. To answer this question, you’ll need to look into the Protocol field of the IP datagram containing this UDP segment (see Figure 4.13 in the text, and the discussion of IP header fields). 
+Protocol: UDP (17) 11 (0010,8)
+0000   7c e2 ca 0e c2 81 9c b6 d0 d6 4a 63 08 00 45 00   
+0010   00 3d 64 06 40 00 80 11 cf 46 0a 3a 61 05 ac d9   
+0020   af 4a d0 f7 01 bb 00 29 6c 4c 5d e8 9f 1e 3b 6b   
+0030   a4 78 a0 6d 07 54 cb ab 0e 9e 6a 57 bb 48 be 92   
+0040   fc 33 e3 5a 93 69 ed 05 94 11 c2                  
+
+7. Examine a pair of UDP packets in which your host sends the first UDP packet and the second UDP packet is a reply to this first UDP packet. (Hint: for a second packet to be sent in response to a first packet, the sender of the first packet should be the destination of the second packet). Describe the relationship between the port numbers in the two packets. 
+53	0.810327	10.58.97.5	172.217.174.110	UDP	75	58398 → 443 Len=33
+54	0.822845	172.217.174.110	10.58.97.5	UDP	68	443 → 58398 Len=26
+same port of first Sou/Des and Second Des/Sou.

@@ -25,8 +25,7 @@ Identification plus 1 in each IP datagram.
 8. What is the value in the Identification field and the TTL field? 
 Identification: 0x32d1 (13009)
 Time to Live: 1
-Identification: 0x0000 (0)
-Time to Live: 254
+
 9. Do these values remain unchanged for all of the ICMP TTL-exceeded replies sent to your computer by the nearest (first hop) router? Why? 
 TTL no Change, Id changed.
-Because router will notice data source that TTL will become 0, and this data have difference id.
+Because router will notice data source that TTL is becoming 0, and this data have difference id.

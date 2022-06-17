@@ -1,0 +1,32 @@
+1. Select the first ICMP Echo Request message sent by your computer, and expand the Internet Protocol part of the packet in the packet details window. What is the IP address of your computer? 
+8	6.163045	192.168.1.102	128.59.23.100	ICMP	98	Echo (ping) request  id=0x0300, seq=20483/848, ttl=1 (no response found!)
+
+2. Within the IP packet header, what is the value in the upper layer protocol field? 
+Protocol: ICMP (1)
+
+3. How many bytes are in the IP header? How many bytes are in the payload of the IP datagram? Explain how you determined the number of payload bytes. 
+.... 0101 = Header Length: 20 bytes (5)
+Total Length: 84 - 20 = 64bytes
+
+4. Has this IP datagram been fragmented? Explain how you determined whether or not the datagram has been fragmented.
+...0 0000 0000 0000 = Fragment Offset: 0
+.0.. .... = Don't fragment: Not set
+
+5. Which fields in the IP datagram always change from one datagram to the next within this series of ICMP messages sent by your computer? 
+Sequence Number changed every time
+
+6. Which fields stay constant? Which of the fields must stay constant? Which fields must change? Why? 
+Data and Type and Code stay constant, type and code must constant, sequence number and Identifier and checksum have to change.
+Because sequence number and identifier make them different with other Echo Request, checksum change because seq and id change.
+
+7. Describe the pattern you see in the values in the Identification field of the IP datagram 
+Identification plus 1 in each IP datagram.
+
+8. What is the value in the Identification field and the TTL field? 
+Identification: 0x32d1 (13009)
+Time to Live: 1
+Identification: 0x0000 (0)
+Time to Live: 254
+9. Do these values remain unchanged for all of the ICMP TTL-exceeded replies sent to your computer by the nearest (first hop) router? Why? 
+TTL no Change, Id changed.
+Because router will notice data source that TTL will become 0, and this data have difference id.

@@ -23,9 +23,10 @@ Because sequence number and identifier make them different with other Echo Reque
 Identification plus 1 in each IP datagram.
 
 8. What is the value in the Identification field and the TTL field? 
-Identification: 0x32d1 (13009)
-Time to Live: 1
+Identification: 0xa60b (42507)
+Time to Live: 244
 
 9. Do these values remain unchanged for all of the ICMP TTL-exceeded replies sent to your computer by the nearest (first hop) router? Why? 
-TTL no Change, Id changed.
-Because router will notice data source that TTL is becoming 0, and this data have difference id.
+ALL changed
+Because each IP packet has to have unique ID.
+if TTL not changed it may means that is answer for retransmition from client, or they are fragments from a same big IP packet.

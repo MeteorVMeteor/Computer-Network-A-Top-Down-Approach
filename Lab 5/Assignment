@@ -29,4 +29,5 @@ Time to Live: 244
 9. Do these values remain unchanged for all of the ICMP TTL-exceeded replies sent to your computer by the nearest (first hop) router? Why? 
 ALL changed
 Because each IP packet has to have unique ID.
-if TTL not changed it may means that is answer for retransmition from client, or they are fragments from a same big IP packet.
+If id not changed will means that they are fragments from a same big IP packet.
+If TTL not changed it may means that is answer for retransmition from client, or they are fragments from a same big IP packet.

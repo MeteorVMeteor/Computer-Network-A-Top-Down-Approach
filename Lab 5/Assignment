@@ -31,3 +31,25 @@ ALL changed
 Because each IP packet has to have unique ID.
 If id not changed will means that they are fragments from a same big IP packet.
 If TTL not changed it may means that is answer for retransmition from client, or they are fragments from a same big IP packet.
+
+10. Find the first ICMP Echo Request message that was sent by your computer after you changed the Packet Size in pingplotter to be 2000. Has that message been fragmented across more than one IP datagram? 
+yes
+
+11. Print out the first fragment of the fragmented IP datagram. What information in the IP header indicates that the datagram been fragmented? What information in the IP header indicates whether this is the first fragment versus a latter fragment? How long is this IP datagram? 
+Flags: 0x20, More fragments
+...0 0000 0000 0000 = Fragment Offset: 0
+Data (1480 bytes) + .... 0101 = Header Length: 20 bytes (5) = Total Length: 1500
+
+12. Print out the second fragment of the fragmented IP datagram. What information in the IP header indicates that this is not the first datagram fragment? Are the more fragments? How can you tell? 
+...0 0101 1100 1000 = Fragment Offset: 1480
+Flags: 0x00  -> NO More fragments
+Because I also checked next ipv4 datagram, and Identification changed.
+
+13. What fields change in the IP header between the first and second fragment? 
+Flags, Fragment Offset, Header Checksum, Total Length
+
+14. How many fragments were created from the original datagram? 
+3
+
+15. What fields change in the IP header among the fragments?
+Flags, Fragment Offset, Header Checksum, Total Length

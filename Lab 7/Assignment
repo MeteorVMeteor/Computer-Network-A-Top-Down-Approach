@@ -34,8 +34,7 @@ Your (client) IP address: 10.58.97.5
 Option: (53) DHCP Message Type (Offer)
 
 9. In the example screenshot in this assignment, there is no relay agent between the host and the DHCP server. What values in the trace indicate the absence of a relay  agent? Is there a relay agent in your experiment? If so what is the IP address of  the agent? 
-Router: 10.58.97.126
-Subnet Mask: 255.255.255.128
+Relay agent IP address: 0.0.0.0
 
 10. Explain the purpose of the router and subnet mask lines in the DHCP offer message. 
 let client get default gateway

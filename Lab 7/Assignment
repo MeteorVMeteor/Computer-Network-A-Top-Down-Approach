@@ -53,3 +53,4 @@ release IP address, No response(ACK) to client, IP address will be release until
 
 14. Clear the bootp filter from your Wireshark window. Were any ARP packets sent  or received during the DHCP packet-exchange period? If so, explain the purpose  of those ARP packets.
 yes, I upload the graph2 to show that, ARP packets to let the same IP address will not be taken by two different client.
+And there are ARP after ACK packet, let ARP accroding this device's IP address -> MAC

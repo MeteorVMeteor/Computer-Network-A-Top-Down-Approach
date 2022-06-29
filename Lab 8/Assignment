@@ -33,4 +33,4 @@ And ICMP reply packet not include IPCM echo packet's data.
 Because this time ICMP probe reach the www.inria.fr server.
 
 10. Within the tracert measurements, is there a link whose delay is significantly  longer than others? Refer to the screenshot in Figure 4, is there a link whose  delay is significantly longer than others? On the basis of the router names, can  you guess the location of the two routers on the end of this link? 
-yes, Because location between this 2 servers have a long distance, it will take more time to transport the message.
+yes, Because location between this 2 servers have a long distance, it will take more time to transport the message.(show by graph2 and graph3)

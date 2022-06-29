@@ -1,0 +1,35 @@
+1. What is the IP address of your host? What is the IP address of the destination  host?  
+source:192.168.1.13	 des:143.89.12.134	ICMP	74	Echo (ping) request  id=0x0001, seq=3/768, ttl=128 (reply in 20)
+  
+2. Why is it that an ICMP packet does not have source and destination port  numbers? 
+Because transport layer protocol are not UDP/TCP.
+
+3. Examine one of the ping request packets sent by your host. What are the ICMP  type and code numbers? What other fields does this ICMP packet have? How  many bytes are the checksum, sequence number and identifier fields? 
+Type: 8 (Echo (ping) request)
+Code: 0
+2,2,2bytes
+
+4. Examine the corresponding ping reply packet. What are the ICMP type and code  numbers? What other fields does this ICMP packet have? How many bytes are the  checksum, sequence number and identifier fields? 
+Type: 0 (Echo (ping) reply)
+Code: 0
+same with request packets
+
+5. What is the IP address of your host? What is the IP address of the target  destination host?  
+Des Address: 128.93.162.83	Host Address: 192.168.1.13	ICMP	106	Echo (ping) reply    id=0x0001, seq=63/16128, ttl=43 (request in 5278)
+
+6. If ICMP sent UDP packets instead (as in Unix/Linux), would the IP protocol number still be 01 for the probe packets? If not, what would it be? 
+No, UDP should be 17
+
+7. Examine the ICMP echo packet in your screenshot. Is this different from the  ICMP ping query packets in the first half of this lab? If yes, how so? 
+TTL is different. TTL start by 1,2...17. 
+
+8. Examine the ICMP error packet in your screenshot. It has more fields than the  ICMP echo packet. What is included in those fields? 
+TTL, Total Length. Part of ICMP include the IP Head and Data from ICMP echo packet.
+
+9. Examine the last three ICMP packets received by the source host. How are these  packets different from the ICMP error packets? Why are they different? 
+Type: 11 (Time-to-live exceeded)
+Type: 0 (Echo (ping) reply)
+And ICMP reply packet not include IPCM echo packet's data.
+Because this time ICMP probe reach the www.inria.fr server.
+
+10. Within the tracert measurements, is there a link whose delay is significantly  longer than others? Refer to the screenshot in Figure 4, is there a link whose  delay is significantly longer than others? On the basis of the router names, can  you guess the location of the two routers on the end of this link? 

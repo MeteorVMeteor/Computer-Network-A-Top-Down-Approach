@@ -70,3 +70,9 @@ Destination: RivetNet_d6:4a:63 (9c:b6:d0:d6:4a:63)
 15. Open the ethernet-ethereal-trace-1 trace file in  
 http://gaia.cs.umass.edu/wireshark-labs/wireshark-traces.zip. The first and second  ARP packets in this trace correspond to an ARP request sent by the computer  running Wireshark, and the ARP reply sent to the computer running Wireshark by  the computer with the ARP-requested Ethernet address. But there is yet another  computer on this network, as indicated by packet 6 – another ARP request. Why  is there no ARP reply (sent in response to the ARP request in packet 6) in the  packet trace? 
 Because this is a Broadcast ARP-requested, and we may not have this MAC address.
+
+EX-1. The arp command: 
+arp -s InetAddr EtherAddr  
+allows you to manually add an entry to the ARP cache that resolves the IP address  InetAddr to the physical address EtherAddr. What would happen if, when you  manually added an entry, you entered the correct IP address, but the wrong  Ethernet address for that remote interface?  
+ERROR!! May be because ARP-requested will be send so fast after I delete the ARP table. My arp -s will be different with the data in ARP table.
+

@@ -23,20 +23,50 @@ YES
 Type: IPv4 (0x0800)
 
 8. How many bytes from the very start of the Ethernet frame does the ASCII “O” in  “OK” (i.e., the HTTP response code) appear in the Ethernet frame?
-67bytes(54+13) 54=(Eth head(14) + IP head(20) + TCP head(20))
+67bytes(54+13) 54=(Eth head(14) + IP head(20) + TCP head(20))  13=(ASCII of "HTTP1.1....")
 
 9. Write down the contents of your computer’s ARP cache. What is the meaning of  each column value? 
-
+IP Address -- MAC Address -- type
 
 10. What are the hexadecimal values for the source and destination addresses in the  Ethernet frame containing the ARP request message? 
+Destination: Broadcast (ff:ff:ff:ff:ff:ff)
+Source: RivetNet_d6:4a:63 (9c:b6:d0:d6:4a:63)
+
 11. Give the hexadecimal value for the two-byte Ethernet Frame type field. What  upper layer protocol does this correspond to? 
+Type: ARP (0x0806)
+
 12. Download the ARP specification from 
-ftp://ftp.rfc-editor.org/in-notes/std/std37.txt. A readable, detailed discussion of  ARP is also at http://www.erg.abdn.ac.uk/users/gorry/course/inet-pages/arp.html.  a) How many bytes from the very beginning of the Ethernet frame does the  ARP opcode field begin?  
+ftp://ftp.rfc-editor.org/in-notes/std/std37.txt. A readable, detailed discussion of  ARP is also at http://www.erg.abdn.ac.uk/users/gorry/course/inet-pages/arp.html.  
+a) How many bytes from the very beginning of the Ethernet frame does the  ARP opcode field begin?  
+14bytes
+
 b) What is the value of the opcode field within the ARP-payload part of the  Ethernet frame in which an ARP request is made? 
+Opcode: request (1)
+
 c) Does the ARP message contain the IP address of the sender?
-d) Where in the ARP request does the “question” appear – the Ethernet  address of the machine whose corresponding IP address is being queried? 13. Now find the ARP reply that was sent in response to the ARP request.  a) How many bytes from the very beginning of the Ethernet frame does the  ARP opcode field begin?  
+Sender IP address: 10.58.97.5
+
+d) Where in the ARP request does the “question” appear – the Ethernet  address of the machine whose corresponding IP address is being queried? 
+Target MAC address: 00:00:00_00:00:00 (00:00:00:00:00:00)
+Target IP address: 10.58.97.126
+only has IP address and NO MAC address.
+
+13. Now find the ARP reply that was sent in response to the ARP request.  
+a) How many bytes from the very beginning of the Ethernet frame does the  ARP opcode field begin?  
+14bytes.
+
 b) What is the value of the opcode field within the ARP-payload part of the  Ethernet frame in which an ARP response is made? 
+Opcode: reply (2)
+
 c) Where in the ARP message does the “answer” to the earlier ARP request  appear – the IP address of the machine having the Ethernet address whose  corresponding IP address is being queried? 
+Sender MAC address: JuniperN_0e:c2:81 (7c:e2:ca:0e:c2:81)
+Sender IP address: 10.58.97.126
+Both MAC and IP address send by answer ARP.
+
 14. What are the hexadecimal values for the source and destination addresses in the  Ethernet frame containing the ARP reply message? 
+Source: JuniperN_0e:c2:81 (7c:e2:ca:0e:c2:81)
+Destination: RivetNet_d6:4a:63 (9c:b6:d0:d6:4a:63)
+
 15. Open the ethernet-ethereal-trace-1 trace file in  
 http://gaia.cs.umass.edu/wireshark-labs/wireshark-traces.zip. The first and second  ARP packets in this trace correspond to an ARP request sent by the computer  running Wireshark, and the ARP reply sent to the computer running Wireshark by  the computer with the ARP-requested Ethernet address. But there is yet another  computer on this network, as indicated by packet 6 – another ARP request. Why  is there no ARP reply (sent in response to the ARP request in packet 6) in the  packet trace? 
+Because this is a Broadcast ARP-requested, and we may not have this MAC address.

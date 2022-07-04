@@ -21,3 +21,15 @@ see question 3
 6. The beacon frames from the 30 Munroe St access point advertise that the access  point can support four data rates and eight additional “extended supported rates.” What are these rates? 
 Tag: Supported Rates 1(B), 2(B), 5.5(B), 11(B), [Mbit/sec]
 Tag: Extended Supported Rates 6(B), 9, 12(B), 18, 24(B), 36, 48, 54, [Mbit/sec]
+
+7. Find the 802.11 frame containing the SYN TCP segment for this first TCP session  (that downloads alice.txt). What are three MAC address fields in the 802.11frame? Which MAC address in this frame corresponds to the wireless host (give  the hexadecimal representation of the MAC address for the host)? To the access  point? To the first-hop router? What is the IP address of the wireless host  sending this TCP segment? What is the destination IP address? Does this  destination IP address correspond to the host, access point, first-hop router, or  some other network-attached device? Explain. 
+475	24.811231		IntelCor_d1:b6:4f (00:13:02:d1:b6:4f) (RA)	802.11	38	Acknowledgement, Flags=........C
+477	24.827922		Cisco-Li_f7:1d:51 (00:16:b6:f7:1d:51) (RA)	802.11	38	Acknowledgement, Flags=........C
+479	24.828140		IntelCor_d1:b6:4f (00:13:02:d1:b6:4f) (RA)	802.11	38	Acknowledgement, Flags=........C
+wireless host: IntelCor_d1:b6:4f (00:13:02:d1:b6:4f)
+AP: Cisco-Li_f7:1d:51 (00:16:b6:f7:1d:51
+First-hop router: Destination address: Cisco-Li_f4:eb:a8 (00:16:b6:f4:eb:a8) (Destination is different with Reciver address).
+192.168.1.109	128.119.245.12	TCP	110	2538 → 80 [SYN] Seq=0 Win=16384 Len=0 MSS=1460 SACK_PERM=1
+No, this is the server of http://gaia.cs.umass.edu/wireshark-labs/alice.txt
+
+8. Find the 802.11 frame containing the SYNACK segment for this TCP session.  What are three MAC address fields in the 802.11 frame? Which MAC address in  this frame corresponds to the host? To the access point? To the first-hop router?  Does the sender MAC address in the frame correspond to the IP address of the  device that sent the TCP segment encapsulated within this datagram? (Hint:  review Figure 6.19 in the text if you are unsure of how to answer this question, or  the corresponding part of the previous question. It’s particularly important that  you understand this). 

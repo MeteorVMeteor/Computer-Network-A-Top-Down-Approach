@@ -37,17 +37,46 @@ Source address: Cisco-Li_f4:eb:a8 (00:16:b6:f4:eb:a8)
 It should not be.
 
 9. What two actions are taken (i.e., frames are sent) by the host in the trace just after  t=49, to end the association with the 30 Munroe St AP that was initially in place  when trace collection began? (Hint: one is an IP-layer action, and one is an  802.11-layer action). Looking at the 802.11 specification, is there another frame  that you might have expected to see, but don’t see here? 
+1733	49.583615	192.168.1.109	192.168.1.1	DHCP	390	DHCP Release  - Transaction ID 0xea5a526
+1735	49.609617	IntelCor_d1:b6:4f	Cisco-Li_f7:1d:51	802.11	54	Deauthentication, SN=1605, FN=0, Flags=........C
+Type/Subtype: Deauthentication (0x000c)
+Disassociation(001010) also can quit the connnection.
 
 10. Examine the trace file and look for AUTHENICATION frames sent from the host  to an AP and vice versa. How many AUTHENTICATION messages are sent  from the wireless host to the linksys_ses_24086 AP (which has a MAC address of  Cisco_Li_f5:ba:bb) starting at around t=49? .  
+First: 1740	49.638857	IntelCor_d1:b6:4f	Cisco-Li_f5:ba:bb	802.11	58	Authentication, SN=1606, FN=0, Flags=........C
+and 5 times retransmitted.
+6(pic1)
 
 11. Does the host want the authentication to require a key or be open? 
+Authentication Algorithm: Open System (0)
 
 12. Do you see a reply AUTHENTICATION from the linksys_ses_24086 AP in the  trace? 
+1736	49.609770		IntelCor_d1:b6:4f (00:13:02:d1:b6:4f) (RA)	802.11	38	Acknowledgement, Flags=........C
+Only ack, but no reply AUTHENTICATION, may beacuse there are no key with the AUTHENTICATION
 
 13. Now let’s consider what happens as the host gives up trying to associate with the  linksys_ses_24086 AP and now tries to associate with the 30 Munroe St AP. Look  for AUTHENICATION frames sent from the host to and AP and vice versa. At  what times are there an AUTHENTICATION frame from the host to the 30  Munroe St. AP, and when is there a reply AUTHENTICATION sent from that AP  to the host in reply? (Note that you can use the filter expression “wlan.fc.subtype  == 11and wlan.fc.type == 0 and wlan.addr == IntelCor_d1:b6:4f” to display only  the AUTHENTICATION frames in this trace for this wireless host.)
+2156	63.168087	IntelCor_d1:b6:4f	Cisco-Li_f7:1d:51	802.11	58	Authentication, SN=1647, FN=0, Flags=........C
+2158	63.169071	Cisco-Li_f7:1d:51	IntelCor_d1:b6:4f	802.11	58	Authentication, SN=3726, FN=0, Flags=........C
 
 14. An ASSOCIATE REQUEST from host to AP, and a corresponding ASSOCIATE  RESPONSE frame from AP to host are used for the host to associated with an AP.  At what time is there an ASSOCIATE REQUEST from host to the 30 Munroe St AP? When is the corresponding ASSOCIATE REPLY sent? (Note that you can  use the filter expression “wlan.fc.subtype < 2 and wlan.fc.type == 0 and  wlan.addr == IntelCor_d1:b6:4f” to display only the ASSOCIATE REQUEST  and ASSOCIATE RESPONSE frames for this trace.) 
+2162	63.169910	IntelCor_d1:b6:4f	Cisco-Li_f7:1d:51	802.11	89	Association Request, SN=1648, FN=0, Flags=........C, SSID=30 Munroe St
+2166	63.192101	Cisco-Li_f7:1d:51	IntelCor_d1:b6:4f	802.11	94	Association Response, SN=3728, FN=0, Flags=........C
 
 15. What transmission rates is the host willing to use? The AP? To answer this  question, you will need to look into the parameters fields of the 802.11 wireless  LAN management frame. 
+Tag: Supported Rates 1(B), 2(B), 5.5(B), 11(B), 6(B), 9, 12(B), 18, [Mbit/sec]
+Tag: Extended Supported Rates 24(B), 36, 48, 54, [Mbit/sec]
+BSS Id: Cisco-Li_f7:1d:51 (00:16:b6:f7:1d:51)
 
+16. What are the sender, receiver and BSS ID MAC addresses in these frames? What  is the purpose of these two types of frames? (To answer this last question, you’ll  need to dig into the online references cited earlier in this lab).
+2152	63.140106	IntelCor_d1:b6:4f	Broadcast	802.11	94	Probe Request, SN=1647, FN=0, Flags=........C, SSID=30 Munroe St
+Source address: IntelCor_d1:b6:4f (00:13:02:d1:b6:4f)
+Receiver address: Broadcast (ff:ff:ff:ff:ff:ff)
+BSS Id: Broadcast (ff:ff:ff:ff:ff:ff)
+Scanning the AP around the host.
+
+2153	63.142451	Cisco-Li_f7:1d:51	IntelCor_d1:b6:4f	802.11	177	Probe Response, SN=3724, FN=0, Flags=........C, BI=100, SSID=30 Munroe St
+Source address: Cisco-Li_f7:1d:51 (00:16:b6:f7:1d:51)
+Receiver address: IntelCor_d1:b6:4f (00:13:02:d1:b6:4f)
+BSS Id: Cisco-Li_f7:1d:51 (00:16:b6:f7:1d:51)
+respond the SSID to host.
 

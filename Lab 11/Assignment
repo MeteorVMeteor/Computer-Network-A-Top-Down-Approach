@@ -37,3 +37,26 @@ TLS session resumption, next time will only use 1 RTT to finish TLS connection.
 NO certificate is in next flame. NO, Certificates Length: 2975, the maxmium size of Ethernet frame is 1500bytes.
 
 10. Locate the client key exchange record. Does this record contain a pre-master  secret? What is this secret used for? Is the secret encrypted? If so, how? How long  is the encrypted secret? 
+EC Diffie-Hellman Server Params
+Pubkey: 04de104645210e232b656940573555676348ca08ea9289dd06757753e57c146d3914bb17…
+no encrtpted, one side use pubkey to encrypted the message, which can only be read by private key user.
+Pubkey Length: 65 
+
+11. What is the purpose of the Change Cipher Spec record? How many bytes is the record in your trace?  
+Content Type: Change Cipher Spec (20)
+6bytes
+
+12. In the encrypted handshake record, what is being encrypted? How? 
+Summary of the message sent before, using new key, to show the data not been changed by third party.
+
+13. Does the server also send a change cipher record and an encrypted handshake  record to the client? How are those records different from those sent by the client? 
+yes, difference are server message no  Client Key Exchange, because key already changed.
+TLSv1.2 Record Layer: Handshake Protocol: New Session Ticket, client can use session ticket to connect only 1 RTT at next time.
+
+14. How is the application data being encrypted? Do the records containing  application data include a MAC? Does Wireshark distinguish between the  encrypted application data and the MAC?  
+Using the new key to encrypted the data, no MAC.
+No, because only Application in server and client can encrypted the data, and MAC aslo be encrypted.
+
+15. Comment on and explain anything else that you found interesting in the trace. 
+In TLS 4 shakehands, server hello and Certificate , key change, server hello done were distinguished by Wireshark.
+It may because Wireshark want we realize Certificate will be processed after client hello soon.

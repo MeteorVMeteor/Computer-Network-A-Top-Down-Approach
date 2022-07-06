@@ -37,8 +37,8 @@ TLS session resumption, next time will only use 1 RTT to finish TLS connection.
 NO certificate is in next flame. NO, Certificates Length: 2975, the maxmium size of Ethernet frame is 1500bytes.
 
 10. Locate the client key exchange record. Does this record contain a pre-master  secret? What is this secret used for? Is the secret encrypted? If so, how? How long  is the encrypted secret? 
+No pre-master , because ECDHE don't use pre-master.
 EC Diffie-Hellman Server Params
-Pubkey: 0406921ca9983e4b447628eb43329f33270b502f88986074b3125b96e6bcee13251e46ea…
 This secret used to count the key for symmetric encryption algorithm.
 Pubkey Length: 65 
 

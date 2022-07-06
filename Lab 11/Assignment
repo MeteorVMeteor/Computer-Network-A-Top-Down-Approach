@@ -1,0 +1,39 @@
+1. For each of the first 8 Ethernet frames, specify the source of the frame (client or  server), determine the number of SSL records that are included in the frame, and  list the SSL record types that are included in the frame. Draw a timing diagram  between client and server, with one arrow for each SSL record. 
+see pic1
+
+2. Each of the SSL records begins with the same three fields (with possibly different  values). One of these fields is “content type” and has length of one byte. List all  three fields and their lengths.  
+Content Type: Application Data (23)
+Version: TLS 1.2 (0x0303)
+Length: 542 
+
+Content Type: Handshake (22)
+Version: TLS 1.0 (0x0301)
+Length: 512 
+
+3. Expand the ClientHello record. (If your trace contains multiple ClientHello  records, expand the frame that contains the first one.) What is the value of the  content type? 
+Content Type: Handshake (22)
+
+4. Does the ClientHello record contain a nonce (also known as a “challenge”)? If so,  what is the value of the challenge in hexadecimal notation? 
+Random: 4aa84731541a336ea49b2c08325008c912602e6f2f1a8966497b78b9f2d67ee6
+GMT Unix Time: Sep 10, 2009 09:24:17.000000000 
+
+5. Does the ClientHello record advertise the cyber suites it supports? If so, in the  first listed suite, what are the public-key algorithm, the symmetric-key algorithm,  and the hash algorithm? 
+Cipher Suites (16 suites)
+see pic2
+ECDHE using asymmetric cryptographic algorithm to get the key, and move to use symmetric encryption algorithm(key exchange).
+
+6. Locate the ServerHello SSL record. Does this record specify a chosen cipher  suite? What are the algorithms in the chosen cipher suite? 
+Cipher Suite: TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (0xc030)　asymmetric cryptographic algorithm
+
+7. Does this record include a nonce? If so, how long is it? What is the purpose of the  client and server nonces in SSL? 
+Random: e9f97c7dc1cfdae23767c00037340e898835f377ce521373a6362adfe01e0bc7
+32 bytes,  use nonces to get the key for Change Cipher Spec, which will be the key of the Application Data.
+
+8. Does this record include a session ID? What is the purpose of the session ID? 
+Session ID Length: 0
+TLS session resumption, next time will only use 1 RTT to finish TLS connection.
+
+9. Does this record contain a certificate, or is the certificate included in a separate  record. Does the certificate fit into a single Ethernet frame? 
+NO certificate is in next flame. NO, Certificates Length: 2975, the maxmium size of Ethernet frame is 1500bytes.
+
+10. Locate the client key exchange record. Does this record contain a pre-master  secret? What is this secret used for? Is the secret encrypted? If so, how? How long  is the encrypted secret? 

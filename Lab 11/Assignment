@@ -20,7 +20,7 @@ GMT Unix Time: Sep 10, 2009 09:24:17.000000000
 5. Does the ClientHello record advertise the cyber suites it supports? If so, in the  first listed suite, what are the public-key algorithm, the symmetric-key algorithm,  and the hash algorithm? 
 Cipher Suites (16 suites)
 see pic2
-ECDHE using asymmetric cryptographic algorithm to get the key, and move to use symmetric encryption algorithm(key exchange).
+Using asymmetric cryptographic algorithm(ECDHE) to get the key, and move to use symmetric encryption algorithm(key exchange).
 
 6. Locate the ServerHello SSL record. Does this record specify a chosen cipher  suite? What are the algorithms in the chosen cipher suite? 
 Cipher Suite: TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (0xc030)　asymmetric cryptographic algorithm
@@ -38,8 +38,8 @@ NO certificate is in next flame. NO, Certificates Length: 2975, the maxmium size
 
 10. Locate the client key exchange record. Does this record contain a pre-master  secret? What is this secret used for? Is the secret encrypted? If so, how? How long  is the encrypted secret? 
 EC Diffie-Hellman Server Params
-Pubkey: 04de104645210e232b656940573555676348ca08ea9289dd06757753e57c146d3914bb17…
-no encrtpted, one side use pubkey to encrypted the message, which can only be read by private key user.
+Pubkey: 0406921ca9983e4b447628eb43329f33270b502f88986074b3125b96e6bcee13251e46ea…
+This secret used to count the key for symmetric encryption algorithm.
 Pubkey Length: 65 
 
 11. What is the purpose of the Change Cipher Spec record? How many bytes is the record in your trace?  

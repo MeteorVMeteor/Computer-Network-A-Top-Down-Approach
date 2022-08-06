@@ -5,7 +5,7 @@
 
 3. Consider now the HTTP GET sent from the client to the Google server (whose IP address is IP address 64.233.169.104) at time 7.109267. What are the source and destination IP addresses and TCP source and destination ports on the IP datagram carrying this HTTP GET? 
 56	7.109267	192.168.1.100	64.233.169.104	HTTP	689	GET / HTTP/1.1 
-Transmission Control Protocol, Src Port: x, Dst Port: 80, Seq: 1, Ack: 1, Len: 635
+Transmission Control Protocol, Src Port: 4335, Dst Port: 80, Seq: 1, Ack: 1, Len: 635
 
 4. At what time is the corresponding 200 OK HTTP message received from the Google server? What are the source and destination IP addresses and TCP source and destination ports on the IP datagram carrying this HTTP 200 OK message? 
 60	7.158797	64.233.169.104	192.168.1.100	HTTP	814	HTTP/1.1 200 OK  (text/html)

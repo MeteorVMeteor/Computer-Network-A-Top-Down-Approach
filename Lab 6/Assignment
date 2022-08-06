@@ -37,6 +37,10 @@ Destination of IP address changed.
 time between syn and ack are different
 Home: [Time since previous frame in this TCP stream: 0.033329000 seconds]
 IPS: [Time since previous frame in this TCP stream: 0.032300000 seconds]
+Home: SYN: Header Checksum: 0xabbb [validation disabled]
+Home: SYN,ACK: Header Checksum: 0xe62b [validation disabled]
+ISP_side : SYN: Header Checksum: 0x04a0 [validation disabled]
+ISP_side : SYN,ACK: Header Checksum: 0x3d10 [validation disabled]
 
 10. Using your answers to 1-8 above, fill in the NAT translation table entries for HTTP connection considered in questions 1-8 above. 
 Local IP Address: 192.168.1.100 source port: 4335  = Intenet IP Address: 71.192.34.104 source port: 4335 
